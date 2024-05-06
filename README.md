@@ -110,9 +110,7 @@ sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
 ```
 
 > ON a multi-node setup remember to provide the IP address of the database server here.
-```
-sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
-```
+
 
 6. Test
 
