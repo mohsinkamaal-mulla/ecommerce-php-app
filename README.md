@@ -24,6 +24,7 @@ sudo yum install -y mariadb-server
 sudo vi /etc/my.cnf
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
+sudo systemctl status mariadb
 ```
 
 2. Configure firewall for Database
@@ -66,7 +67,6 @@ Run sql script
 sudo mysql < db-load-script.sql
 ```
 
-
 ## Deploy and Configure Web
 
 1. Install required packages
@@ -90,27 +90,28 @@ sudo sed -i 's/index.html/index.php/g' /etc/httpd/conf/httpd.conf
 ```
 sudo systemctl start httpd
 sudo systemctl enable httpd
+sudo systemctl status httpd
 ```
 
 4. Download code
 
 ```
 sudo yum install -y git
-sudo git clone https://github.com/kodekloudhub/learning-app-ecommerce.git /var/www/html/
+sudo git clone https://github.com/mohsinkamaal-mulla/ecommerce-php-app.git /var/www/html/
 ```
 
 5. Update index.php
 
-Update [index.php](https://github.com/kodekloudhub/learning-app-ecommerce/blob/13b6e9ddc867eff30368c7e4f013164a85e2dccb/index.php#L107) file to connect to the right database server. In this case `localhost` since the database is on the same server.
+Update [index.php](https://github.com/mohsinkamaal-mulla/ecommerce-php-app/edit/main/index.php#L107) file to connect to the right database server. In this case `localhost` since the database is on the same server.
 
 ```
 sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
 
-              <?php
-                        $link = mysqli_connect('172.20.1.101', 'ecomuser', 'ecompassword', 'ecomdb');
-                        if ($link) {
-                        $res = mysqli_query($link, "select * from products;");
-                        while ($row = mysqli_fetch_assoc($res)) { ?>
+<?php
+          $link = mysqli_connect('172.20.1.101', 'ecomuser', 'ecompassword', 'ecomdb');
+          if ($link) {
+          $res = mysqli_query($link, "select * from products;");
+?>
 ```
 
 > ON a multi-node setup remember to provide the IP address of the database server here.
@@ -123,3 +124,9 @@ sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
 ```
 curl http://localhost
 ```
+
+## Automated Deployment Script
+
+Here you can find the deployment script for automation
+
+https://github.com/mohsinkamaal-mulla/shell-scripting/blob/main/ecommerce_deployment_script.sh
