@@ -106,13 +106,13 @@
 
                         // $link = mysqli_connect('172.20.1.101', 'ecomuser', 'ecompassword', 'ecomdb');
                         // Fetch database connection details directly from environment variables
-                        $dbHost=getenv('DB_HOST');
-                        $dbUser=getenv('DB_USER');
-                        $dbPassword=getenv('DB_PASSWORD');
-                        $dbName=getenv('DB_NAME');
+                        DB_HOST=$DB_HOST
+                        DB_USER=$DB_USER
+                        DB_PASSWORD=$DB_PASSWORD
+                        DB_NAME=$DB_NAME
 
                         // Attempt to connect to the database
-                        $link = mysqli_connect($dbHost, $dbUser, $dbPassword, $dbName);
+                        $link = mysqli_connect($DB_HOST, $DB_USER, $DB_PASSWORD, $DB_NAME);
 
                         if ($link) {
                         $res = mysqli_query($link, "select * from products;");
