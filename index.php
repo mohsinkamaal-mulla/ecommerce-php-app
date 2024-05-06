@@ -105,6 +105,13 @@
               <?php
 
                         // $link = mysqli_connect('172.20.1.101', 'ecomuser', 'ecompassword', 'ecomdb');
+
+                        // Set environment variables
+                        SetEnv DB_HOST localhost
+                        SetEnv DB_USER ecomuser
+                        SetEnv DB_PASSWORD ecompassword
+                        SetEnv DB_NAME ecomdb
+                            
                         // Fetch database connection details directly from environment variables
                         $dbHost = getenv('DB_HOST');
                         $dbUser = getenv('DB_USER');
