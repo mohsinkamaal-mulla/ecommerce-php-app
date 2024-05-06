@@ -107,11 +107,6 @@ Update [index.php](https://github.com/mohsinkamaal-mulla/ecommerce-php-app/edit/
 ```
 sudo sed -i 's/172.20.1.101/localhost/g' /var/www/html/index.php
 
-<?php
-          $link = mysqli_connect('172.20.1.101', 'ecomuser', 'ecompassword', 'ecomdb');
-          if ($link) {
-          $res = mysqli_query($link, "select * from products;");
-?>
 ```
 
 > ON a multi-node setup remember to provide the IP address of the database server here.
